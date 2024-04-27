@@ -1,5 +1,5 @@
 let menu =
-  "1. Ejercicio1\n2. Ejercicio2\n3. Ejercicio3\n4. Ejercicio4\n5. Ejercicio5\n6. Ejercicio6\n7. Ejercicio7\n8. Ejercicio8\n9. Ejercicio9\n10. Ejercicio10\n11. Ejercicio11\n12. Ejercicio12\n13. Ejercicio13\n14. Ejercicio14\n15. Ejercicio15\n16. Ejercicio16\n.17 Ejercicio17\n.18 salir ";
+  "1. Contraseña Valida\n2. Calcular Impuestos\n3. IMC\n4. Imprimir un arreglo\n5. Contar rango de números\n6. Número de Likes\n7. Sumar rango de números\n8. Número de aes\n9. Número de caracteres\n10. Sumar arreglo\n11. Multiplicar arreglo\n12. Remover ceros\n13. Transcribir ADN a ARN\n14. Capitalizar palabra\n15. Encontrar el número máximo\n16. Encontrar números pares en un arreglo\n.17 Generar contraseña\n.18 Encontrar posiciones de números pares\n.19  Encontrar palabras que empiecen por a\n.20  ";
 let opcion = "";
 
 do {
@@ -43,16 +43,58 @@ do {
       numeroDeAes(prompt("Ingrese una Palabra"));
       break;
     case "9":
+      numeroDeCaracteres(
+        prompt("Ingrese una Palabra: "),
+        prompt("Ingrese el caracter que desea evaluar: ")
+      );
       break;
     case "10":
+      Array = [];
+      let tam = parseInt(prompt("Ingrese el tamaño del arreglo: "));
+      for (let i = 0; i < tam; i++) {
+        let num = parseFloat(prompt("Ingrese un numero: "));
+        Array.push(num);
+      }
+      suma = sumarArreglo(Array);
+      alert(suma);
       break;
     case "11":
+      arreglo = [];
+      let tama = parseInt(prompt("Ingrese el tamaño del arreglo: "));
+      for (let i = 0; i < tama; i++) {
+        let num = parseFloat(prompt("Ingrese un numero: "));
+        arreglo.push(num);
+      }
+      multiplicarArreglo(arreglo);
       break;
     case "12":
+      sinCero = [];
+      let ta = parseInt(prompt("Ingrese el tamaño del arreglo: "));
+      for (let i = 0; i < ta; i++) {
+        let num = parseFloat(prompt("Ingrese un numero: "));
+        sinCero.push(num);
+      }
+      alert("Este es tu arreglo: " + sinCero);
+      removerCeros(sinCero);
       break;
     case "13":
+      transcribir(prompt("Escribe una casena de ADN: "));
       break;
     case "14":
+      capitalizar(prompt("Escriba una palabra: "));
+      break;
+    case "15":
+      numeros = [];
+      let leg = parseInt(prompt("Ingrese el tamaño del arreglo: "));
+      for (let i = 0; i < leg; i++) {
+        let num = parseFloat(prompt("Ingrese un numero: "));
+        arreglo.push(num);
+      }
+      max(numeros);
+      break;
+    case "16":
+      break;
+    case "17":
       break;
 
     default:
@@ -136,4 +178,69 @@ function sumarRango(inicial, final) {
 }
 
 // EJERCICIO #8
-function numeroDeAes() {}
+function numeroDeAes(palabra) {
+  let contador = 0;
+  for (let i = 0; i < palabra.length; i++) {
+    if (palabra[i] === "a") {
+      contador += 1;
+    }
+  }
+  alert(`El número de aes en ${palabra} es de ${contador}`);
+}
+
+//  EJERCICIO #9
+function numeroDeCaracteres(pal, caract) {
+  let contador = 0;
+  for (let i = 0; i < pal.length; i++) {
+    if (pal[i] === caract) {
+      contador += 1;
+    }
+  }
+  alert(`El número de ${caract} en ${pal} es de ${contador}`);
+}
+
+//  EJERCICIO #10
+function sumarArreglo(array) {
+  return array[0] + sumarArreglo(array.slice(1));
+}
+
+//  EJERCICIO #11
+function multiplicarArreglo(arreglo) {
+  let mult = 1;
+  for (let i = 0; i < arreglo.length; i++) {
+    mult *= arreglo[i];
+  }
+  alert("La multiplicacion de cada elemento del arreglo es: " + mult);
+}
+
+// EJERCICIO #12
+function removerCeros(sinCero) {
+  let newSin = sinCero.filter((num) => num !== 0);
+  alert("Nuevo Arreglo sin ceros: " + newSin);
+}
+
+//  EJERCICIO #13
+function transcribir(ADN) {
+  let arn = "";
+  for (let i = 0; i < ADN.length; i++) {
+    if (ADN[i] === "G") {
+      arn += "C";
+    } else if (ADN[i] === "C") {
+      arn += "G";
+    } else if (ADN[i] === "T") {
+      arn += "A";
+    } else if (ADN[i] === "A") {
+      arn += "U";
+    }
+  }
+  alert("Cadena de ADN: " + ADN + "Cadena de ARN: " + arn);
+}
+
+//  EJERCICIO #14
+function capitalizar(capi) {
+  let capitalizado = capi.charAt(0).toUpperCase() + capi.slice(1);
+  alert("El str es: " + capi + ", Capitalizada es: " + capitalizado);
+}
+
+//  EJERCICIO #15
+function max(numeros) {}
